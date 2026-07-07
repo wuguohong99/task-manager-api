@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: task-manager-config
+  namespace: task-manager
+data:
+  SERVICE_NAME: "task-manager-api"
+  LOG_LEVEL: "INFO"
+  PORT: "8080"
+  RATE_LIMIT_PER_MINUTE: "100"

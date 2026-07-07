@@ -1,0 +1,10 @@
+services:
+  task-manager-api:
+    build: .
+    image: task-manager-api:local
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      LOG_LEVEL: "INFO"
+      RATE_LIMIT_PER_MINUTE: "100"
