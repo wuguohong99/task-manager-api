@@ -46,3 +46,7 @@ Use this checklist before submitting the GitHub repository link.
 - [x] Pipeline includes lint, test, Docker build, and Trivy security scan.
 - [x] Image tag format is `ghcr.io/<username>/task-manager-api:<sha>`.
 - [x] CI badge is documented in `README.md`.
+
+## Final submission commit
+
+- [x] Final repository state is ready for review.
