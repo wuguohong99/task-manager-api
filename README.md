@@ -1,22 +1,30 @@
 # 任务管理器 API
 
-[![CI](https://github.com/<your-username>/task-manager-api/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-username>/task-manager-api/actions/workflows/ci.yml)
 
-一个使用 Python 3.11 和 FastAPI 构建的 RESTful 任务管理器 API。该服务支持任务的增删改查、健康检查、内存存储、请求参数验证、结构化 JSON 错误响应、请求日志、Swagger/OpenAPI 文档、单元测试、Docker 容器化、Minikube Kubernetes 部署，以及 GitHub Actions CI/CD。
 
-> 创建 GitHub 仓库后，请将 CI 徽章中的 `<your-username>` 替换为你的 GitHub 用户名。
+
+
+
+
+一个使用 Python 3.11 和 FastAPI 构建的 RESTful 任务管理器 API。该服务支持任务的增删改查、健康检查、内存存储、请求参数验证、结构化 JSON 错误响应、请求日志。
+
+
+
+## GitHub 仓库`wuguohong99` 的CI 徽章 [![CI](https://github.com/wuguohong99/task-manager-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/wuguohong99/task-manager-api/actions/workflows/ci.yml)
+
+
 
 ## 技术栈
 
-| 领域 | 技术 |
-| --- | --- |
-| API 框架 | Python 3.11+、FastAPI、Pydantic |
-| 服务器 | Uvicorn |
-| 测试 | pytest、pytest-cov |
-| 代码检查 | pylint |
-| 容器 | Docker、Docker Compose |
-| Kubernetes | Minikube、kubectl、Ingress |
-| CI/CD | GitHub Actions、Trivy、GHCR |
+| 领域         | 技术                            |
+| ---------- | ----------------------------- |
+| API 框架     | Python 3.11+、FastAPI、Pydantic |
+| 服务器        | Uvicorn                       |
+| 测试         | pytest、pytest-cov             |
+| 代码检查       | pylint                        |
+| 容器         | Docker、Docker Compose         |
+| Kubernetes | Minikube、kubectl、Ingress      |
+| CI/CD      | GitHub Actions、Trivy、GHCR     |
 
 ## 项目结构
 
@@ -53,14 +61,14 @@ task-manager-api/
 
 ## API 端点
 
-| 方法 | 路径 | 说明 | 状态码 |
-| --- | --- | --- | --- |
-| GET | `/health` | 健康检查 | 200 |
-| GET | `/tasks` | 获取全部任务 | 200 |
-| GET | `/tasks/{id}` | 获取单个任务 | 200 / 404 |
-| POST | `/tasks` | 创建任务 | 201 / 400 |
-| PUT | `/tasks/{id}` | 更新任务 | 200 / 404 |
-| DELETE | `/tasks/{id}` | 删除任务 | 204 / 404 |
+| 方法     | 路径            | 说明     | 状态码       |
+| ------ | ------------- | ------ | --------- |
+| GET    | `/health`     | 健康检查   | 200       |
+| GET    | `/tasks`      | 获取全部任务 | 200       |
+| GET    | `/tasks/{id}` | 获取单个任务 | 200 / 404 |
+| POST   | `/tasks`      | 创建任务   | 201 / 400 |
+| PUT    | `/tasks/{id}` | 更新任务   | 200 / 404 |
+| DELETE | `/tasks/{id}` | 删除任务   | 204 / 404 |
 
 Swagger UI 地址：
 
@@ -180,13 +188,13 @@ pylint src --fail-under=8.0
 
 ## 运行时配置
 
-| 环境变量 | 默认值 | 说明 |
-| --- | --- | --- |
-| `SERVICE_NAME` | `task-manager-api` | `/health` 接口返回的服务名称 |
-| `PORT` | `8080` | Docker 启动命令使用的 HTTP 监听端口 |
-| `HOST` | `0.0.0.0` | Docker 启动命令使用的 HTTP 绑定地址 |
-| `LOG_LEVEL` | `INFO` | Python 日志级别 |
-| `RATE_LIMIT_PER_MINUTE` | `100` | 基于客户端和请求路径的滑动窗口每分钟限流数量 |
+| 环境变量                    | 默认值                | 说明                       |
+| ----------------------- | ------------------ | ------------------------ |
+| `SERVICE_NAME`          | `task-manager-api` | `/health` 接口返回的服务名称      |
+| `PORT`                  | `8080`             | Docker 启动命令使用的 HTTP 监听端口 |
+| `HOST`                  | `0.0.0.0`          | Docker 启动命令使用的 HTTP 绑定地址 |
+| `LOG_LEVEL`             | `INFO`             | Python 日志级别              |
+| `RATE_LIMIT_PER_MINUTE` | `100`              | 基于客户端和请求路径的滑动窗口每分钟限流数量   |
 
 ## Docker
 
@@ -220,7 +228,7 @@ docker compose up --build
 
 快速开始：
 
-```bash
+```
 minikube start
 minikube addons enable ingress
 docker build -t task-manager-api:latest .
@@ -273,7 +281,7 @@ ghcr.io/<username>/task-manager-api:<sha>
 
 ```bash
 cd task-manager-api
-git remote add origin https://github.com/<your-username>/task-manager-api.git
+git remote add origin https://github.com/wuguohong99/task-manager-api.git
 git push -u origin main
 git push origin feature/api feature/container-k8s feature/ci-docs v1.0.0
 ```
