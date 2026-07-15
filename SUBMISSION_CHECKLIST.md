@@ -1,52 +1,78 @@
-# Homework Submission Checklist
+作业提交检查清单
+========
 
-Use this checklist before submitting the GitHub repository link.
+在提交 GitHub 仓库链接之前，请使用此清单进行检查。
+任务 1：Git 与仓库
+------------
 
-## Task 1: Git and repository
+- [ ] 仓库为公开仓库，名称为 `task-manager-api`。
 
-- [ ] Repository is public and named `task-manager-api`.
-- [ ] `README.md` exists and contains local, Docker, Kubernetes, and CI instructions.
-- [ ] Branches exist: `main`, at least two `feature/*` branches.
-- [ ] Commit messages follow Conventional Commits.
-- [ ] Final commit message is `feat: complete homework submission`.
-- [ ] `.gitignore` excludes virtual environments, IDE files, logs, and build artifacts.
+- [ ] 存在 `README.md`，并包含本地运行、Docker、Kubernetes 和 CI 使用说明。
 
-## Task 2: REST API
+- [ ] 存在以下分支：`main`，以及至少两个 `feature/*` 分支。
 
-- [x] `GET /health` returns HTTP 200.
-- [x] `GET /tasks` returns all tasks.
-- [x] `GET /tasks/{id}` returns HTTP 200 or 404.
-- [x] `POST /tasks` returns HTTP 201 or 400.
-- [x] `PUT /tasks/{id}` returns HTTP 200 or 404.
-- [x] `DELETE /tasks/{id}` returns HTTP 204 or 404.
-- [x] JSON data model includes `id`, `title`, `description`, `status`, `created_at`, `updated_at`.
-- [x] Request validation, error handling, request logs, Swagger docs, tests, and rate limiting are included.
+- [ ] 提交信息遵循 Conventional Commits 规范。
 
-## Task 3: Docker
+- [ ] 最终提交信息为 `feat: complete homework submission`。
 
-- [x] `Dockerfile` uses multi-stage build.
-- [x] Runtime image uses an official `python:3.11-slim` base.
-- [x] App runs as a non-root user.
-- [x] Port can be configured with `PORT`, defaulting to 8080.
-- [x] `.dockerignore` is included.
-- [x] `docker-compose.yml` is included.
+- [ ] `.gitignore` 已排除虚拟环境、IDE 文件、日志和构建产物。
 
-## Task 4: Kubernetes
+任务 2：REST API
+-------------
 
-- [x] Namespace, Deployment, Service, ConfigMap, and Ingress manifests exist.
-- [x] Deployment has 2 replicas.
-- [x] CPU and memory requests/limits are configured.
-- [x] Liveness and readiness probes use `/health`.
-- [x] Ingress host is `task-manager.local`.
-- [x] `k8s/README.md` explains deployment and validation.
+* [ ] `GET /health` 返回 HTTP 200。
 
-## Task 5: CI/CD
+* [ ] `GET /tasks` 返回全部任务。
 
-- [x] `.github/workflows/ci.yml` triggers on push and pull request to `main`.
-- [x] Pipeline includes lint, test, Docker build, and Trivy security scan.
-- [x] Image tag format is `ghcr.io/<username>/task-manager-api:<sha>`.
-- [x] CI badge is documented in `README.md`.
+* [ ] `GET /tasks/{id}` 返回 HTTP 200 或 404。
 
-## Final submission commit
+* [ ] `POST /tasks` 返回 HTTP 201 或 400。
 
-- [x] Final repository state is ready for review.
+* [ ] `PUT /tasks/{id}` 返回 HTTP 200 或 404。
+
+* [ ] `DELETE /tasks/{id}` 返回 HTTP 204 或 404。
+
+* [ ] JSON 数据模型包含 `id`、`title`、`description`、`status`、`created_at`、`updated_at`。
+
+* [ ] 已包含请求验证、错误处理、请求日志、Swagger 文档、测试和限流功能。
+
+任务 3：Docker
+-----------
+
+* [ ] `Dockerfile` 使用多阶段构建。
+
+* [ ] 运行时镜像使用官方 `python:3.11-slim` 基础镜像。
+
+* [ ] 应用以非 root 用户身份运行。
+
+* [ ] 端口可通过 `PORT` 配置，默认值为 8080。
+
+* [ ] 已包含 `.dockerignore`。
+
+* [ ] 已包含 `docker-compose.yml`。
+
+任务 4：Kubernetes
+---------------
+
+* [ ] 已包含 Namespace、Deployment、Service、ConfigMap 和 Ingress 清单文件。
+
+* [ ] Deployment 配置了 2 个副本。
+
+* [ ] 已配置 CPU 和内存的 requests/limits。
+
+* [ ] 存活探针和就绪探针均使用 `/health`。
+
+* [ ] Ingress 主机名为 `task-manager.local`。
+
+* [ ] `k8s/README.md` 中包含部署和验证说明。
+
+任务 5：CI/CD
+----------
+
+* [ ] `.github/workflows/ci.yml` 会在推送到 `main` 分支以及针对 `main` 分支创建 Pull Request 时触发。
+
+* [ ] 流水线包含代码检查、测试、Docker 构建和 Trivy 安全扫描。
+
+* [ ] 镜像标签格式为 `ghcr.io/<username>/task-manager-api:<sha>`。
+
+* [ ] `README.md` 中已包含 CI 徽章说明。

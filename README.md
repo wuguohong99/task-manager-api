@@ -1,24 +1,24 @@
-# Task Manager API
+# 任务管理器 API
 
 [![CI](https://github.com/<your-username>/task-manager-api/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-username>/task-manager-api/actions/workflows/ci.yml)
 
-A RESTful Task Manager API built with Python 3.11 and FastAPI. The service supports task CRUD operations, health checks, in-memory storage, request validation, structured JSON errors, request logging, Swagger/OpenAPI documentation, unit tests, Docker containerization, Minikube Kubernetes deployment, and GitHub Actions CI/CD.
+一个使用 Python 3.11 和 FastAPI 构建的 RESTful 任务管理器 API。该服务支持任务的增删改查、健康检查、内存存储、请求参数验证、结构化 JSON 错误响应、请求日志、Swagger/OpenAPI 文档、单元测试、Docker 容器化、Minikube Kubernetes 部署，以及 GitHub Actions CI/CD。
 
-> Replace `<your-username>` in the CI badge after creating your GitHub repository.
+> 创建 GitHub 仓库后，请将 CI 徽章中的 `<your-username>` 替换为你的 GitHub 用户名。
 
-## Tech stack
+## 技术栈
 
-| Area | Technology |
+| 领域 | 技术 |
 | --- | --- |
-| API framework | Python 3.11+, FastAPI, Pydantic |
-| Server | Uvicorn |
-| Tests | pytest, pytest-cov |
-| Lint | pylint |
-| Container | Docker, Docker Compose |
-| Kubernetes | Minikube, kubectl, Ingress |
-| CI/CD | GitHub Actions, Trivy, GHCR |
+| API 框架 | Python 3.11+、FastAPI、Pydantic |
+| 服务器 | Uvicorn |
+| 测试 | pytest、pytest-cov |
+| 代码检查 | pylint |
+| 容器 | Docker、Docker Compose |
+| Kubernetes | Minikube、kubectl、Ingress |
+| CI/CD | GitHub Actions、Trivy、GHCR |
 
-## Project structure
+## 项目结构
 
 ```text
 task-manager-api/
@@ -51,30 +51,30 @@ task-manager-api/
 └── README.md
 ```
 
-## API endpoints
+## API 端点
 
-| Method | Path | Description | Status codes |
+| 方法 | 路径 | 说明 | 状态码 |
 | --- | --- | --- | --- |
-| GET | `/health` | Health check | 200 |
-| GET | `/tasks` | List all tasks | 200 |
-| GET | `/tasks/{id}` | Get one task | 200 / 404 |
-| POST | `/tasks` | Create a task | 201 / 400 |
-| PUT | `/tasks/{id}` | Update a task | 200 / 404 |
-| DELETE | `/tasks/{id}` | Delete a task | 204 / 404 |
+| GET | `/health` | 健康检查 | 200 |
+| GET | `/tasks` | 获取全部任务 | 200 |
+| GET | `/tasks/{id}` | 获取单个任务 | 200 / 404 |
+| POST | `/tasks` | 创建任务 | 201 / 400 |
+| PUT | `/tasks/{id}` | 更新任务 | 200 / 404 |
+| DELETE | `/tasks/{id}` | 删除任务 | 204 / 404 |
 
-Swagger UI is available at:
+Swagger UI 地址：
 
 ```bash
 http://localhost:8080/docs
 ```
 
-OpenAPI JSON is available at:
+OpenAPI JSON 地址：
 
 ```bash
 http://localhost:8080/openapi.json
 ```
 
-## Task model
+## 任务数据模型
 
 ```json
 {
@@ -87,9 +87,9 @@ http://localhost:8080/openapi.json
 }
 ```
 
-## Local development
+## 本地开发
 
-### 1. Create a virtual environment
+### 1. 创建虚拟环境
 
 ```bash
 python3.11 -m venv .venv
@@ -98,19 +98,19 @@ python -m pip install --upgrade pip
 pip install -r requirements-dev.txt
 ```
 
-### 2. Run the API
+### 2. 启动 API
 
 ```bash
 uvicorn src.app:app --reload --host 0.0.0.0 --port 8080
 ```
 
-### 3. Verify health
+### 3. 验证健康检查
 
 ```bash
 curl http://localhost:8080/health
 ```
 
-Expected example:
+预期响应示例：
 
 ```json
 {
@@ -120,9 +120,9 @@ Expected example:
 }
 ```
 
-## API examples
+## API 使用示例
 
-### Create a task
+### 创建任务
 
 ```bash
 curl -X POST http://localhost:8080/tasks \
@@ -130,21 +130,21 @@ curl -X POST http://localhost:8080/tasks \
   -d '{"title":"Write Kubernetes manifests","description":"Create namespace, deployment, service, configmap, ingress","status":"todo"}'
 ```
 
-Expected status: `201 Created`.
+预期状态：`201 Created`。
 
-### List tasks
+### 获取任务列表
 
 ```bash
 curl http://localhost:8080/tasks
 ```
 
-### Get one task
+### 获取单个任务
 
 ```bash
 curl http://localhost:8080/tasks/<task-id>
 ```
 
-### Update a task
+### 更新任务
 
 ```bash
 curl -X PUT http://localhost:8080/tasks/<task-id> \
@@ -152,57 +152,57 @@ curl -X PUT http://localhost:8080/tasks/<task-id> \
   -d '{"status":"done"}'
 ```
 
-### Delete a task
+### 删除任务
 
 ```bash
 curl -X DELETE http://localhost:8080/tasks/<task-id>
 ```
 
-Expected status: `204 No Content`.
+预期状态：`204 No Content`。
 
-## Run tests and coverage
+## 运行测试和覆盖率检查
 
 ```bash
 pytest
 ```
 
-The configured coverage gate is 60%:
+当前配置的最低测试覆盖率为 60%：
 
 ```bash
 pytest --cov=src --cov-report=term-missing --cov-fail-under=60
 ```
 
-## Lint
+## 代码检查
 
 ```bash
 pylint src --fail-under=8.0
 ```
 
-## Runtime configuration
+## 运行时配置
 
-| Environment variable | Default | Description |
+| 环境变量 | 默认值 | 说明 |
 | --- | --- | --- |
-| `SERVICE_NAME` | `task-manager-api` | Name returned by `/health` |
-| `PORT` | `8080` | HTTP listen port used by Docker command |
-| `HOST` | `0.0.0.0` | HTTP bind address used by Docker command |
-| `LOG_LEVEL` | `INFO` | Python logging level |
-| `RATE_LIMIT_PER_MINUTE` | `100` | Sliding-window per-client per-path limit |
+| `SERVICE_NAME` | `task-manager-api` | `/health` 接口返回的服务名称 |
+| `PORT` | `8080` | Docker 启动命令使用的 HTTP 监听端口 |
+| `HOST` | `0.0.0.0` | Docker 启动命令使用的 HTTP 绑定地址 |
+| `LOG_LEVEL` | `INFO` | Python 日志级别 |
+| `RATE_LIMIT_PER_MINUTE` | `100` | 基于客户端和请求路径的滑动窗口每分钟限流数量 |
 
 ## Docker
 
-### Build image
+### 构建镜像
 
 ```bash
 docker build -t task-manager-api .
 ```
 
-### Run container
+### 运行容器
 
 ```bash
 docker run --rm -p 8080:8080 task-manager-api
 ```
 
-### Verify
+### 验证服务
 
 ```bash
 curl http://localhost:8080/health
@@ -214,11 +214,11 @@ curl http://localhost:8080/health
 docker compose up --build
 ```
 
-## Kubernetes with Minikube
+## 使用 Minikube 部署 Kubernetes
 
-See the detailed guide in [`k8s/README.md`](k8s/README.md).
+详细说明请参阅 [`k8s/README.md`](k8s/README.md)。
 
-Quick start:
+快速开始：
 
 ```bash
 minikube start
@@ -230,7 +230,7 @@ kubectl rollout status deployment/task-manager-api -n task-manager
 kubectl get all -n task-manager
 ```
 
-Port-forward validation:
+使用端口转发进行验证：
 
 ```bash
 kubectl port-forward svc/task-manager-api -n task-manager 8080:8080
@@ -238,7 +238,7 @@ curl http://localhost:8080/health
 curl http://localhost:8080/tasks
 ```
 
-Ingress validation:
+使用 Ingress 进行验证：
 
 ```bash
 echo "$(minikube ip) task-manager.local" | sudo tee -a /etc/hosts
@@ -248,28 +248,28 @@ curl http://task-manager.local/tasks
 
 ## CI/CD
 
-The GitHub Actions workflow is defined in `.github/workflows/ci.yml` and runs on:
+GitHub Actions 工作流定义在 `.github/workflows/ci.yml` 中，并在以下情况下运行：
 
-- Push to `main`
-- Pull request to `main`
+- 向 `main` 分支推送代码
+- 创建或更新目标分支为 `main` 的 Pull Request
 
-Pipeline stages:
+流水线阶段：
 
-1. Lint with `pylint`
-2. Test with `pytest` and coverage threshold
-3. Build Docker image
-4. Scan the image with Trivy
-5. Push image to GHCR on `main` branch pushes
+1. 使用 `pylint` 进行代码检查
+2. 使用 `pytest` 运行测试并检查覆盖率阈值
+3. 构建 Docker 镜像
+4. 使用 Trivy 扫描镜像
+5. 在代码推送到 `main` 分支时，将镜像推送到 GHCR
 
-The Docker image is tagged as:
+Docker 镜像标签格式：
 
 ```text
 ghcr.io/<username>/task-manager-api:<sha>
 ```
 
-## Git submission steps
+## Git 提交步骤
 
-If you use the provided zip that includes Git history, create an empty public GitHub repository named `task-manager-api`, then run:
+如果你使用了包含 Git 历史记录的压缩包，请创建一个名为 `task-manager-api` 的空白公开 GitHub 仓库，然后运行：
 
 ```bash
 cd task-manager-api
@@ -278,16 +278,16 @@ git push -u origin main
 git push origin feature/api feature/container-k8s feature/ci-docs v1.0.0
 ```
 
-If you do not use the included Git history, create your own feature branches and Conventional Commits before submission.
+如果你没有使用所提供的 Git 历史记录，请在提交前自行创建功能分支，并使用 Conventional Commits 规范提交代码。
 
-Recommended final commit message:
+推荐的最终提交信息：
 
 ```text
 feat: complete homework submission
 ```
 
-## Notes
+## 注意事项
 
-- Storage is in memory as required by the homework, so tasks are reset when the process restarts.
-- The repository does not contain secrets, tokens, passwords, or private keys.
-- For screenshots, capture `kubectl get all -n task-manager` and successful API responses, then add them to the README if desired.
+- 按照作业要求，数据存储在内存中，因此进程重启后任务数据会被清空。
+- 仓库中不包含密钥、令牌、密码或私钥。
+- 如需提交截图，可以截取 `kubectl get all -n task-manager` 的输出以及成功的 API 响应，并按需添加到 README 中。
