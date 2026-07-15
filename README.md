@@ -293,9 +293,15 @@ git push origin feature/api feature/container-k8s feature/ci-docs v1.0.0
 ```text
 feat: complete homework submission
 ```
+## `kubectl get all -n task-manager` 的输出
+<img width="963" height="305" alt="image" src="https://github.com/user-attachments/assets/95db35ee-3fd1-40c1-b563-c2601b6c444b" />
+
+## API 调⽤成功的响应示例
+<img width="1510" height="113" alt="image" src="https://github.com/user-attachments/assets/3e8a3c64-236b-4130-a349-460ac935a56a" />
+
+
 
 ## 注意事项
-
-- 按照作业要求，数据存储在内存中，因此进程重启后任务数据会被清空。
+- 数据存储在内存中，因此进程重启后任务数据会被清空。
 - 仓库中不包含密钥、令牌、密码或私钥。
-- 如需提交截图，可以截取 `kubectl get all -n task-manager` 的输出以及成功的 API 响应，并按需添加到 README 中。
+  
